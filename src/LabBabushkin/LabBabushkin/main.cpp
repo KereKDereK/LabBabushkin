@@ -1,6 +1,4 @@
 #include <iostream>
-#include "Circle.h"
-#include "Point.h"
 
 
 using namespace std;
@@ -11,7 +9,6 @@ int main()
 	int R, x, y;
 	cout << "Введите R: " << endl;
 	cin >> R;
-	Circle A(R);
 
     for (int i = 0; i < 10; i++)
     {
@@ -19,12 +16,22 @@ int main()
         cin >> x;
         cout << "y" << i + 1 << ":" << endl;
         cin >> y;
-        Point Z(x, y);
         cout << endl;
-        if (A.Check(Z) == true)
-            cout << "Попадание!" << endl;
-        else
-            cout << "Промах..." << endl;
+        if (x > 0)
+        {
+            if (((x * x) + (y * y) <= R * R) && (x <= y))
+                cout << "Попадание!" << endl;
+            else
+                cout << "Промах..." << endl;
+        }
+
+        if (x < 0)
+        {
+            if (((x * x) + (y * y) <= R * R) && (x >= y))
+                cout << "Попадание!" << endl;
+            else
+                cout << "Промах..." << endl;
+        }
     }
     system("pause");
 	return 0;
